@@ -28,18 +28,25 @@
 
     <script>
         const noBtn = document.getElementById('nobutton');
-        const yesBtn = document.getElementById('yesbutton');
+    
+        // store its initial position (center point)
+        let initialLeft = null;
+        let initialTop = null;
     
         function movebutton() {
-            const btnRect = yesBtn.getBoundingClientRect();
-            const offset = 120; // how far "No" can move around Yes (reduce if still too wide)
+            if (!initialLeft || !initialTop) {
+                const rect = noBtn.getBoundingClientRect();
+                initialLeft = rect.left + window.scrollX;
+                initialTop = rect.top + window.scrollY;
+            }
     
-            const x = (Math.random() - 0.5) * offset; 
-            const y = (Math.random() - 0.5) * offset; 
+            const offset = 120; // max range around original spot
+            const x = (Math.random() - 0.5) * offset * 2; // random between -offset and +offset
+            const y = (Math.random() - 0.5) * offset * 2;
     
             noBtn.style.position = "absolute";
-            noBtn.style.left = `${btnRect.left + window.scrollX + x}px`;
-            noBtn.style.top = `${btnRect.top + window.scrollY + y}px`;
+            noBtn.style.left = `${initialLeft + x}px`;
+            noBtn.style.top = `${initialTop + y}px`;
         }
 
         document.body.addEventListener("click", () => {
