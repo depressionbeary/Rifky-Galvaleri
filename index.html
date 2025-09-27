@@ -27,25 +27,20 @@
 
 
     <script>
-const noBtn = document.getElementById("nobutton");
-const buttonsContainer = document.querySelector(".buttons");
-
-// define how far the button can move (in px)
-const offset = 100;  
-
 function movebutton() {
-  // container size
-  const rect = buttonsContainer.getBoundingClientRect();
+    const noBtn = document.getElementById('nobutton');
+    const container = noBtn.parentElement; // .buttons container
 
-  // random offsets within range
-  const x = (Math.random() - 0.5) * 2 * offset;
-  const y = (Math.random() - 0.5) * 2 * offset;
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
 
-  // move button relative to container center
-  noBtn.style.position = "absolute";
-  noBtn.style.left = `${rect.width / 2 + x}px`;
-  noBtn.style.top = `${rect.height / 2 + y}px`;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
 }
+
 
         document.body.addEventListener("click", () => {
         const audio = document.getElementById("backgroundSound");
