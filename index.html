@@ -27,20 +27,29 @@
 
 
     <script>
+
 function movebutton() {
     const noBtn = document.getElementById('nobutton');
-    const container = noBtn.parentElement; // .buttons container
 
-    const maxX = container.clientWidth - noBtn.offsetWidth;
-    const maxY = container.clientHeight - noBtn.offsetHeight;
+    // store original center only once
+    if (!noBtn.dataset.initLeft) {
+        const rect = noBtn.getBoundingClientRect();
+        noBtn.dataset.initLeft = rect.left;
+        noBtn.dataset.initTop = rect.top;
+    }
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const initLeft = parseFloat(noBtn.dataset.initLeft);
+    const initTop = parseFloat(noBtn.dataset.initTop);
 
+    const range = 150; // adjust how far it can hop
+
+    const x = initLeft + (Math.random() - 0.5) * range * 2;
+    const y = initTop + (Math.random() - 0.5) * range * 2;
+
+    noBtn.style.position = "absolute";
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
 }
-
 
         document.body.addEventListener("click", () => {
         const audio = document.getElementById("backgroundSound");
