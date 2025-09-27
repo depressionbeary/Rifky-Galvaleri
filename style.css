@@ -96,13 +96,18 @@
 }
 
 #yesbutton {
-  margin-right: 100px; /* push away from No */
-  position: relative;
+  position: absolute;
+  left: 20px;    /* stays on left */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #nobutton {
   position: absolute;
-  transition: left 0.4s ease, top 0.4s ease; /* smooth hops */
+  left: 180px;   /* starting position */
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.4s ease, top 0.4s ease;
 }
 
 #nobutton:hover {
