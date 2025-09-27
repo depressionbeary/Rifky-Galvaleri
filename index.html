@@ -28,18 +28,24 @@
 
     <script>
         function movebutton() {
-        const noBtn = document.getElementById('nobutton');
-        const container = noBtn.parentElement; // .buttons container
-    
-        const maxX = container.clientWidth - noBtn.offsetWidth;
-        const maxY = container.clientHeight - noBtn.offsetHeight;
-    
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-    
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
+            const yesBtn = document.getElementById('yesbutton');
+            const noBtn = document.getElementById('nobutton');
+            const container = noBtn.parentElement;
+            const maxX = container.clientWidth - noBtn.offsetWidth;
+            const maxY = container.clientHeight - noBtn.offsetHeight;
+            let x, y;
+            do {
+                x = Math.random() * maxX;
+                y = Math.random() * maxY;
+                // Check if too close to Yes button
+            } while (
+                Math.abs(x - yesBtn.offsetLeft) < 100 &&
+                Math.abs(y - yesBtn.offsetTop) < 50
+            );
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
         }
+
 
         
         document.body.addEventListener("click", () => {
