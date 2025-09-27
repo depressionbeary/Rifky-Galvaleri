@@ -27,30 +27,24 @@
 
 
     <script>
-        // Save original position when page loads
-        let baseX = null, baseY = null;
-        
-        window.onload = () => {
-          const noBtn = document.getElementById('nobutton');
-          const rect = noBtn.getBoundingClientRect();
-          baseX = rect.left;
-          baseY = rect.top;
-        };
-        
         function movebutton() {
-          const noBtn = document.getElementById('nobutton');
-        
-          // movement range in px (tweak these to make it more/less wild)
-          const rangeX = 150;  
-          const rangeY = 120;  
-        
-          // random offset from original position
-          const offsetX = (Math.random() - 0.5) * 2 * rangeX;
-          const offsetY = (Math.random() - 0.5) * 2 * rangeY;
-        
-          noBtn.style.position = "absolute";
-          noBtn.style.left = `${baseX + offsetX}px`;
-          noBtn.style.top = `${baseY + offsetY}px`;
+            const noBtn = document.getElementById('nobutton');
+            const hero = document.querySelector('.hero');
+    
+            const heroRect = hero.getBoundingClientRect(); // hero size & position
+    
+            // Keep some padding so button doesn’t hug edges
+            const padding = 50;  
+    
+            const maxX = heroRect.width - noBtn.offsetWidth - padding;
+            const maxY = heroRect.height - noBtn.offsetHeight - padding;
+    
+            const x = Math.random() * maxX + heroRect.left + padding/2;
+            const y = Math.random() * maxY + heroRect.top + padding/2;
+    
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
         }
 
         document.body.addEventListener("click", () => {
