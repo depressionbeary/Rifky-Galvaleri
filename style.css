@@ -90,12 +90,14 @@
   background: none;
 }
 
-#nobutton {
-  position: absolute;   /* will now move inside .buttons box */
+#yesbutton {
+  margin-right: 100px; /* push away from No */
+  position: relative;
 }
 
-#yesbutton {
-  position: relative;   /* stays in place */
+#nobutton {
+  position: absolute;
+  right: 0; /* stays on the right side */
 }
 
 #nobutton:hover {
