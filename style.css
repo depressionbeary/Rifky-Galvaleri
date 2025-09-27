@@ -80,14 +80,17 @@
   font-size: 20px;
   padding: 12px 30px;
   margin: 10px;
-  transition: 0.5s;
+  transition: 0.3s;
   position: relative;
   background: white;
   border-radius: 10px;
+
+  border: 2px solid transparent;  /* reserve space */
+  box-sizing: border-box;         /* make border part of button size */
 }
 
 .content a:hover {
-  border: 2px solid white;
+  border-color: white;  /* only change color */
   color: white;
   background: none;
 }
@@ -97,10 +100,10 @@
   position: relative;
 }
 
-#nobutton {
-  position: absolute;
-  right: 0; /* stays on the right side */
-  transition: left 0.8s ease, top 0.8s ease; /* slower hop */
+#nobutton:hover {
+  border-color: red;
+  color: red;
+  background: none;
 }
 
 #nobutton:hover {
