@@ -27,21 +27,32 @@
 
 
     <script>
+        // Save original position when page loads
+        let baseX = null, baseY = null;
+        
+        window.onload = () => {
+          const noBtn = document.getElementById('nobutton');
+          const rect = noBtn.getBoundingClientRect();
+          baseX = rect.left;
+          baseY = rect.top;
+        };
+        
         function movebutton() {
-        const noBtn = document.getElementById('nobutton');
-        const container = noBtn.parentElement; // .buttons container
-    
-        const maxX = container.clientWidth - noBtn.offsetWidth;
-        const maxY = container.clientHeight - noBtn.offsetHeight;
-    
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-    
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
+          const noBtn = document.getElementById('nobutton');
+        
+          // movement range in px (tweak these to make it more/less wild)
+          const rangeX = 150;  
+          const rangeY = 120;  
+        
+          // random offset from original position
+          const offsetX = (Math.random() - 0.5) * 2 * rangeX;
+          const offsetY = (Math.random() - 0.5) * 2 * rangeY;
+        
+          noBtn.style.position = "absolute";
+          noBtn.style.left = `${baseX + offsetX}px`;
+          noBtn.style.top = `${baseY + offsetY}px`;
         }
 
-        
         document.body.addEventListener("click", () => {
         const audio = document.getElementById("backgroundSound");
         audio.muted = false; // unmute after user clicks anywhere
