@@ -112,6 +112,7 @@
     .galery{
         flex-direction: column;
         align-items: center;
+        grid-template-columns: 1fr;
     }
     .gallery-item{
         width: 90%;
@@ -131,7 +132,7 @@
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 30px;
