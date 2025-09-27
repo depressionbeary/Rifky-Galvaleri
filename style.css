@@ -98,6 +98,7 @@
 #nobutton {
   position: absolute;
   right: 0; /* stays on the right side */
+  transition: left 0.2s ease, top 0.2s ease;
 }
 
 #nobutton:hover {
