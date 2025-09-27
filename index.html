@@ -29,13 +29,15 @@
     <script>
         function movebutton() {
             const noBtn = document.getElementById('nobutton');
-            // margin so it never leaves the viewport
-            const margin = 40;
-            const maxX = window.innerWidth - noBtn.offsetWidth - margin;
-            const maxY = window.innerHeight - noBtn.offsetHeight - margin;
-            // pick random position in a much bigger range
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
+            // safe area boundaries (avoid going completely off screen)
+            const padding = 80; // how far from edges
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+        
+            // random new position
+            const x = Math.random() * maxX + padding / 2;
+            const y = Math.random() * maxY + padding / 2;
+        
             noBtn.style.position = "absolute";
             noBtn.style.left = `${x}px`;
             noBtn.style.top = `${y}px`;
