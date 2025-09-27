@@ -27,24 +27,19 @@
 
 
     <script>
+        const noBtn = document.getElementById('nobutton');
+        const yesBtn = document.getElementById('yesbutton');
+    
         function movebutton() {
-            const noBtn = document.getElementById('nobutton');
-            const hero = document.querySelector('.hero');
+            const btnRect = yesBtn.getBoundingClientRect();
+            const offset = 120; // how far "No" can move around Yes (reduce if still too wide)
     
-            const heroRect = hero.getBoundingClientRect(); // hero size & position
+            const x = (Math.random() - 0.5) * offset; 
+            const y = (Math.random() - 0.5) * offset; 
     
-            // Keep some padding so button doesn’t hug edges
-            const padding = 50;  
-    
-            const maxX = heroRect.width - noBtn.offsetWidth - padding;
-            const maxY = heroRect.height - noBtn.offsetHeight - padding;
-    
-            const x = Math.random() * maxX + heroRect.left + padding/2;
-            const y = Math.random() * maxY + heroRect.top + padding/2;
-    
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
+            noBtn.style.position = "absolute";
+            noBtn.style.left = `${btnRect.left + window.scrollX + x}px`;
+            noBtn.style.top = `${btnRect.top + window.scrollY + y}px`;
         }
 
         document.body.addEventListener("click", () => {
