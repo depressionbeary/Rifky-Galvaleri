@@ -93,6 +93,12 @@
   position: relative;
 }
 
+#nobutton:hover {
+    border: 2px solid red;
+    color: red;
+    background: none;
+}
+
 /* GALLERY SECTION */
 .gallery-container {
   text-align: center;
