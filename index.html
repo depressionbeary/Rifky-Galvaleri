@@ -28,22 +28,23 @@
 
     <script>
         const noBtn = document.getElementById("nobutton");
+        const buttonsContainer = document.querySelector(".buttons");
         
-        // Get parent container dimensions
-        const parent = document.querySelector(".buttons");
-        
-        // movement range (in px, moderate)
-        const offset = 120;  
+        // define how far the button can move (in px)
+        const offset = 100;  
         
         function movebutton() {
-            const parentRect = parent.getBoundingClientRect();
-            const randX = Math.random() * offset * 2 - offset; 
-            const randY = Math.random() * offset * 2 - offset;
-            const parentCenterX = parentRect.width / 2;
-            const parentCenterY = parentRect.height / 2;
-            noBtn.style.position = "absolute";
-            noBtn.style.left = `${parentCenterX + randX}px`;
-            noBtn.style.top = `${parentCenterY + randY}px`;
+          // container size
+          const rect = buttonsContainer.getBoundingClientRect();
+        
+          // random offsets within range
+          const x = (Math.random() - 0.5) * 2 * offset;
+          const y = (Math.random() - 0.5) * 2 * offset;
+        
+          // move button relative to container center
+          noBtn.style.position = "absolute";
+          noBtn.style.left = `${rect.width / 2 + x}px`;
+          noBtn.style.top = `${rect.height / 2 + y}px`;
         }
 
         document.body.addEventListener("click", () => {
