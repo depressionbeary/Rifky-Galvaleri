@@ -61,7 +61,8 @@
 /* BUTTONS (avoid absolute placement for mobile friendliness) */
 .buttons {
   position: relative;
-  height: 100px;
+  width: 300px;
+  height: 150px;
   display: flex;
   flex-wrap: wrap;        /* was invalid before */
   gap: 15px;
