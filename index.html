@@ -27,26 +27,23 @@
 
 
     <script>
-        const noBtn = document.getElementById('nobutton');
-    
-        // store its initial position (center point)
-        let initialLeft = null;
-        let initialTop = null;
-    
+        const noBtn = document.getElementById("nobutton");
+        
+        // Get parent container dimensions
+        const parent = document.querySelector(".buttons");
+        
+        // movement range (in px, moderate)
+        const offset = 120;  
+        
         function movebutton() {
-            if (!initialLeft || !initialTop) {
-                const rect = noBtn.getBoundingClientRect();
-                initialLeft = rect.left + window.scrollX;
-                initialTop = rect.top + window.scrollY;
-            }
-    
-            const offset = 120; // max range around original spot
-            const x = (Math.random() - 0.5) * offset * 2; // random between -offset and +offset
-            const y = (Math.random() - 0.5) * offset * 2;
-    
+            const parentRect = parent.getBoundingClientRect();
+            const randX = Math.random() * offset * 2 - offset; 
+            const randY = Math.random() * offset * 2 - offset;
+            const parentCenterX = parentRect.width / 2;
+            const parentCenterY = parentRect.height / 2;
             noBtn.style.position = "absolute";
-            noBtn.style.left = `${initialLeft + x}px`;
-            noBtn.style.top = `${initialTop + y}px`;
+            noBtn.style.left = `${parentCenterX + randX}px`;
+            noBtn.style.top = `${parentCenterY + randY}px`;
         }
 
         document.body.addEventListener("click", () => {
