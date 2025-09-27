@@ -1,183 +1,189 @@
+/* ========== style.css (replace your file) ========== */
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-.hero{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
-    position: relative;
-    padding: 0 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* HERO / BACKGROUND */
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
+  position: relative;
+  padding: 0 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.back-video{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+.back-video {
+  position: absolute;
+  inset: 0;                 /* covers all sides */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* keeps video covering area */
+  z-index: -1;
 }
 
-.content{
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
+/* CONTENT */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.content h1{
-    margin-bottom: 20px;
-    font-size: clamp(24px, 5vw, 40px);
-    max-font-size: 40px;
-    color: white;
-    font-weight: 600;
-    transition: 0.5s;
+.content h1 {
+  margin-bottom: 20px;
+  font-size: clamp(24px, 5vw, 40px);
+  color: white;
+  font-weight: 600;
+  transition: 0.5s;
 }
 
 .content h1:hover {
-    -webkit-text-stroke: 2px white;
-    color: transparent;
-    cursor: default;
-} 
-
-.content a{
-    text-decoration: none;
-    display: inline-block;
-    color: black;
-    font-size: 20px;
-    /* border: 2px solid black; */
-    padding: 12px 30px;
-    margin: 10px 0;
-    margin-top: 100px;
-    margin-inline: 10px;
-    transition: 0.5s;
-    position: relative;
-    background: white;
+  -webkit-text-stroke: 2px white;
+  color: transparent;
+  cursor: default;
 }
 
-.content a:hover{
-    border: 2px solid white;
-    color: white;
-    background: none;
+/* BUTTONS (avoid absolute placement for mobile friendliness) */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;        /* was invalid before */
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-#nobutton{
-    position: absolute;
-    margin-left: 200px;
+/* make links look like buttons */
+.content a {
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  font-size: 20px;
+  padding: 12px 30px;
+  margin: 10px;
+  transition: 0.5s;
+  position: relative;
+  background: white;
+  border-radius: 10px;
 }
 
-#yesbutton {
-    position: absolute;
-    margin-right: 200px;
+.content a:hover {
+  border: 2px solid white;
+  color: white;
+  background: none;
 }
 
-.buttons{
-    display: flex;
-    flex-direction: wrap;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 20px;
+/* If you want the "No" button to dodge, control it via JS rather than absolute positioning.
+   Keep them relatively positioned so mobile layouts are stable. */
+#nobutton, #yesbutton {
+  position: relative;
 }
 
+/* GALLERY SECTION */
 .gallery-container {
-    text-align: center;
-    margin-top: 50px;
-    color: white;
-    position: relative;
-    z-index: 2;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  position: relative;
+  z-index: 2;
+  width: 100%;
 }
 
+/* responsive grid:
+   - min column width 220px
+   - auto-fit will create as many columns as fit, and collapse on narrower screens
+*/
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 30px;
-    gap: 15px;
-    width: 100%;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin: 0 auto 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto; /* center the grid */
 }
 
+/* cards */
 .gallery-item {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 12px;
-    text-align: center;
-    width: 100%;
-    max-width: 250px;
-    margin: auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-    transition: transform 0.3s;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gallery-item:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .gallery-item img {
-    width: 100%;
-    height: auto;
-    max-width: 200px;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
+/* caption */
 .caption {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #fff;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #fff;
 }
 
+/* heart canvas overlay */
 #heartCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-@media (min-aspect-ratio: 16/9) {
-    .back-video{
-        width: 100%;
-        height: auto;
-    }
-}
-@media (max-aspect-ratio: 16/9) {
-    .back-video{
-        width: auto;
-        height: 100%;
-    }
+/* ---------- Responsive overrides (put at the END so they override earlier rules) ---------- */
+
+/* tablet: 2 columns under ~900px */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+/* mobile: force 1 column under 600px */
 @media (max-width: 600px) {
-    .content h1{
-        font-size: 8vw;
-    }
-    .gallery{
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    .gallery-item{
-        width: 100%;
-        max-width: none;
-    }
-    .gallery-item img{
-        width: 100%;
-    }
+  .content h1 {
+    font-size: 8vw;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr; /* FORCE single column */
+    gap: 12px;
+    padding: 0 10px;
+  }
+
+  .gallery-item {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .content a {
+    padding: 10px 22px;
+    font-size: 18px;
+  }
 }
