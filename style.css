@@ -97,9 +97,9 @@
 
 #yesbutton {
   position: absolute;
-  left: 50%;
+  left: 100px;   /* shift further right */
   top: 50%;
-  transform: translate(-30%, -50%); /* shift right by reducing X translate */
+  transform: translateY(-50%);
 }
 
 #nobutton {
