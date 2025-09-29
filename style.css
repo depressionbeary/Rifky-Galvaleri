@@ -61,7 +61,7 @@
 /* BUTTONS (avoid absolute placement for mobile friendliness) */
 .buttons {
   position: relative;
-  width: 500px;
+  width: 300px;
   height: 150px;
   display: flex;
   flex-wrap: wrap;        /* was invalid before */
