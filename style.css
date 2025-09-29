@@ -97,7 +97,7 @@
 
 #yesbutton {
   position: absolute;
-  left: 20px;    /* stays on left */
+  left: 50px;    /* stays on left */
   top: 50%;
   transform: translateY(-50%);
 }
